@@ -5,13 +5,18 @@
   <h4><%= @confrontation.title %></h4>
   <div class='argument'>
     <p><%= @confrontation.argument %></p>
-    <input type='submit' value='Upvote!'>
+    <form action="/vote/true" method='POST'>
+      <input type="hidden" name='id' value="<%= @confrontation.id %>">
+      <input type='submit' value='Upvote!'>
+    </form>
   </div>
   <div class='rebuttal'>
     <p><%= @confrontation.rebuttal.counterargument %></p>
-    <input type='submit' value='Upvote!'>
+    <form action="/vote/false" method='POST'>
+      <input type="hidden" name='id' value="<%= @confrontation.id %>">
+      <input type='submit' value='Upvote!'>
+    </form>
   </div>
 </div>
-
 
 </div>
