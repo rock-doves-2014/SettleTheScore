@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Profile</h1>
+  <h3>Welcome, <%= @user.name %>!</h3>
+  <h4>Current Confrontations</h4>
+  <% @user.confrontations.each do |conf| %>
+  <h6><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h6>
+  <% end %>
+  <h4>Current Rebuttals</h4>
+  <% @user.rebuttals.each do |reb| %>
+  <h6><a href="/rebuttal/<%= reb.id %>"><%= reb.title %></a></h6>
+  <% end %>
+
+</div>
