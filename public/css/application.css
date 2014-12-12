@@ -2,8 +2,51 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  /*border: 1px dotted black;*/
 }
 th {
   text-align: left;
+}
+h1{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+}
+.home_buttom {
+
+}
+p{
+  font-family: 'Raleway', sans-serif;
+}
+header {
+  background-color: black;
+  height: 60px;
+}
+ul{
+  margin-top: 20px;
+  padding: 0;
+}
+li{
+  display: inline-block;
+}
+nav{
+width: 300px;
+height: 60px;
+float: right;
+}
+a.top_nav {
+    padding: 22px;
+    text-decoration: none;
+    color:white;
+}
+
+.main_font{
+    font-family: 'Abril Fatface', cursive;
+    color:white;
+    float: left;
+    font-size: 31px;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+span {
+    font-size: 15px;
 }
