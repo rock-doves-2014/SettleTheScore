@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>New Confrontation</h1>
+  <h3></h3>
+  <form action='/confrontation' method='POST'>
+    <p>Title:</p>
+    <input type="hidden" name="confrontation[user_id]" value='<%= session[:user_id]%>'>
+    <input type="text" name="confrontation[title]"><br>
+    <p>Argument:</p>
+    <textarea name="confrontation[argument]"></textarea><br>
+    <p>Your Opponent:</p>
+    <input type="email" name="opponent"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+
+</div>
