@@ -1,18 +1,29 @@
 <div class="container">
   <h1>Confrontation!</h1>
 
-  <form action='/login' method="GET">
-    <input type="submit" value="Login">
-  </form>
-  <br>
-  <form action='/signup' method="GET">
-    <input type="submit" value="Signup">
-  </form>
-  <br>
-  <form action='/logout' method="GET">
-    <input type="submit" value="Logout">
-  </form>
+<nav>
+  <% if !@user %>
+    <form action='/login' method="GET">
+      <input type="submit" value="Login">
+    </form>
+    <br>
+    <form action='/signup' method="GET">
+      <input type="submit" value="Signup">
+    </form>
+    <br>
+  <% else %>
+    <form action='/logout' method="GET">
+      <input type="submit" value="Logout">
+    </form><br>
+    <a href="/confrontation/new"><input type="submit" value="New Confrontaion"></a><br>
+  <% end %>
+</nav>
 
-</div>
+<section>
+  <% @confrontations.each do |conf| %>
+    <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+  <% end %>
+</section>
+
 
 </div>

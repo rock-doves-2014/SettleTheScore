@@ -1,4 +1,5 @@
 get '/' do
-  # Look in app/views/index.erb
+  @user = session[:user_id]
+  @confrontations = Confrontation.all
   erb :index
 end
