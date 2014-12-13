@@ -1,6 +1,5 @@
 <div class="container">
   <h1>Confrontation!</h1>
-  <a href="/profile/<%= @user %>">Profile</a>
 
   <nav>
     <% if !@user %>
@@ -11,6 +10,7 @@
         <input type="submit" value="Signup">
       </form><br>
     <% else %>
+      <a href="/profile/<%= @user %>">Profile</a><br>
       <form action='/logout' method="GET">
         <input type="submit" value="Logout">
       </form><br>

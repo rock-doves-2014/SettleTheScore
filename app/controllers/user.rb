@@ -31,9 +31,12 @@ get '/profile/:id' do |id|
   @user = User.find(id)
   if @user.id == session[:user_id]
     erb :'user/profile'
-  # elsif user[id] != nil
   else
-    redirect '/login'
+    if session[:user_id]
+      redirect '/'
+    else
+      redirect '/login'
+    end
   end
 end
 
