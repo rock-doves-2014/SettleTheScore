@@ -21,6 +21,10 @@
   </head>
   <body>
         <header>
+          <form action='/tag' method='GET'>
+            <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
+          <input type="submit" value='Search'>
+          </form>
           <p class = "main_font">SettleTheScore <span>.com</span> </p>
           <nav class="head">
 
@@ -35,39 +39,16 @@
               </ul>
           </nav>
         </header>
+          <datalist id='tags'>
+            <% tags.each do |tag| %>
+              <option value="<%= tag.name %>">
+            <% end %>
+          </datalist>
 
+
+        <a href="/confrontation/new">Start Arguing!</a>
         <%=yield%>
 
   </body>
-=======
-  <title></title>
 </head>
-<body>
-  <datalist id='tags'>
-    <% tags.each do |tag| %>
-      <option value="<%= tag.name %>">
-    <% end %>
-  </datalist>
-  <nav>
-    <ul>
-      <% if !@user %>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Signup</a></li>
-      <% else %>
-        <li><a href="/profile/<%= @user.id %>">Hi, <%= @user.name %></a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/confrontation/new">Start Arguing!</a></li>
-      <% end %>
-      <li>
-        <form action='/tag' method='GET'>
-          <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
-          <input type="submit" value='Search'>
-        </form>
-      </li>
-    </ul>
-  </nav>
-
-  <%= yield %>
-</body>
->>>>>>> master
 </html>
