@@ -25,14 +25,16 @@
       <% end %>
     </datalist>
     <form action='/tag' method='GET'>
-      <input type="text" list='tags' name='tag'>
+      <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
       <input type="submit" value='Search'>
     </form>
   </section>
 
   <section>
     <% @confrontations.each do |conf| %>
-      <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+      <% if conf.created_at != conf.updated_at %>
+        <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+      <% end %>
     <% end %>
   </section>
 

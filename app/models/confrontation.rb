@@ -28,8 +28,8 @@ class Confrontation < ActiveRecord::Base
     (Time.now - self.updated_at)/3600 >= 24
   end
 
-  def create_rebuttal(email)
-  opponent = User.find_by(email: email)
+  def create_rebuttal(name)
+  opponent = User.find_by(name: name)
   Rebuttal.create(counterargument: "Unanswered" , user_id: opponent.id, confrontation_id: self.id)
   end
 
