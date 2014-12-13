@@ -18,5 +18,6 @@ post '/confrontation' do
   opponent = User.find_by(email: params[:opponent])
   Rebuttal.create(counterargument: "Unanswered" , user_id: opponent.id, confrontation_id: @confrontation.id)
   ###
+  @confrontation.create_tags(params[:tags])
   erb :'confrontation/confrontation'
 end

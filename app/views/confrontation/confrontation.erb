@@ -19,6 +19,11 @@
       </form>
       <%= @confrontation.calculate_votes[1] %>
     </div>
+    <p>
+      <% @confrontation.tags.each do |tag| %>
+        <span> <a href="/tag/<%= tag.id %>">#<%= tag.name %></a></span>
+      <% end %>
+    </p>
   </div>
   <a href="/">Home</a>
 </div>

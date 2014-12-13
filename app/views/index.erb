@@ -19,6 +19,18 @@
   </nav>
 
   <section>
+    <datalist id='tags'>
+      <% @tags.each do |tag| %>
+        <option value="<%= tag.name %>">
+      <% end %>
+    </datalist>
+    <form action='/tags/' method='GET'>
+      <input type="text" list='tags'>
+      <input type="submit" value='Search'>
+    </form>
+  </section>
+
+  <section>
     <% @confrontations.each do |conf| %>
       <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
     <% end %>
