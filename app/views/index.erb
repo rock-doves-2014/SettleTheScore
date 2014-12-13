@@ -24,8 +24,8 @@
         <option value="<%= tag.name %>">
       <% end %>
     </datalist>
-    <form action='/tags/' method='GET'>
-      <input type="text" list='tags'>
+    <form action='/tag' method='GET'>
+      <input type="text" list='tags' name='tag'>
       <input type="submit" value='Search'>
     </form>
   </section>
