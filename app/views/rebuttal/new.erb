@@ -1,16 +1,15 @@
 <div class="container">
+
   <h1>Answer Confrontation</h1>
   <h3><%= @confrontation.title %></h3>
   <form action='/rebuttal' method='POST'>
     <input type="hidden" name="_method" value='PUT'>
     <input type="hidden" name="rebuttal[user_id]" value='<%= session[:user_id]%>'>
     <h4>Your Opponent's Argument</h4>
-    <%= @confrontation.argument %>
-    <br>
+    <%= @confrontation.argument %><br>
     <h4>Your Counter Argument:</h4>
-    <textarea name="counterargument"></textarea><br>
+    <textarea name="counterargument" placeholder='Your counter argument here...' required></textarea><br>
     <input type="submit" value="Submit">
   </form>
-
 
 </div>

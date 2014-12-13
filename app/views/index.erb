@@ -5,8 +5,11 @@
     <p>Lorem ipsum dolor sit amet, wisi aliquam adipiscing rutrum non consequat donec, varius nulla bibendum vitae dolor ante. Arcu etiam convallis, morbi scelerisque nunc ornare, augue quisque metus. Justo sem viverra quisque mus ultricies vestibulum, volutpat qui morbi molestiae lobortis in, integer imperdiet, ipsum euismod sit quis. Vel id praesent tincidunt fermentum, vivamus rutrum lacus, odio pharetra fringilla eget eu. Mauris wisi libero urna vitae, in metus amet vel, in elementum libero nibh at amet, facilisis sit non hac aliquam volutpat, est vitae pede diam felis volutpat. In quis imperdiet porttitor, tristique a suspendisse cupidatat sed, feugiat vel nec cras ultrices, semper in etiam leo nulla. Erat maecenas, vitae eget ipsum ligula, tempor aliquam nullam tristique tincidunt sed, id magna. Ut tincidunt nisl ante, eu sed mauris in lacinia velit sit, nonummy etiam arcu nulla malesuada hendrerit cupidatat, vulputate nunc litora sed cursus cras.</p>
   </div>
   <a href="/confrontation/new"><input type="submit" value="New Confrontaion"></a>
+
   <% @confrontations.each do |conf| %>
-    <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
-  <% end %>
-</section>
+      <% if conf.created_at != conf.updated_at %>
+        <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+      <% end %>
+    <% end %>
+  </section>
 </div>

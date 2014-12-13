@@ -1,22 +1,37 @@
 <div class="container">
   <h1>Confrontation</h1>
 
-<div class='confrontation'>
-  <h4><%= @confrontation.title %></h4>
-  <div class='argument'>
-    <p><%= @confrontation.argument %></p>
-    <form action="/vote/true" method='POST'>
-      <input type="hidden" name='id' value="<%= @confrontation.id %>">
-      <input type='submit' value='Upvote!'>
-    </form>
+  <div class='confrontation'>
+    <h4><%= @confrontation.title %></h4>
+    <div class='argument'>
+      <p><%= @confrontation.argument %></p>
+      <%= @confrontation.calculate_votes[0] %>
+    </div>
+    <div class='rebuttal'>
+      <p><%= @confrontation.rebuttal.counterargument %></p>
+      <%= @confrontation.calculate_votes[1] %>
+    </div>
+    <p>
+      <% @confrontation.tags.each do |tag| %>
+        <span> <a href="/tag/<%= tag.id %>">#<%= tag.name %></a></span>
+      <% end %>
+    </p>
   </div>
-  <div class='rebuttal'>
-    <p><%= @confrontation.rebuttal.counterargument %></p>
-    <form action="/vote/false" method='POST'>
-      <input type="hidden" name='id' value="<%= @confrontation.id %>">
-      <input type='submit' value='Upvote!'>
-    </form>
-  </div>
-</div>
+  <% unless @confrontation.time_expired? %>
+    <div id='voting'>
+      <form action="/vote/true" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote Argument!'>
+      </form>
+      <form action="/vote/false" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote Counter Argument!'>
+      </form>
+    </div>
+  <% end %>
+  <% if @confrontation.time_expired? %>
+    <%= gravatar_tag @confrontation.winner[0] %>
+    <%= @confrontation.winner[1] %>
+  <% end %>
 
 </div>

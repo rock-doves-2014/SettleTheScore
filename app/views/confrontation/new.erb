@@ -1,16 +1,18 @@
 <div class="container">
+
   <h1>New Confrontation</h1>
   <h3></h3>
   <form action='/confrontation' method='POST'>
     <p>Title:</p>
     <input type="hidden" name="confrontation[user_id]" value='<%= session[:user_id]%>'>
-    <input type="text" name="confrontation[title]"><br>
+    <input type="text" name="confrontation[title]" required><br>
     <p>Argument:</p>
-    <textarea name="confrontation[argument]"></textarea><br>
+    <textarea name="confrontation[argument]" required></textarea><br>
     <p>Your Opponent:</p>
-    <input type="email" name="opponent"><br>
+    <input type="text" name="opponent" placeholder='Username' required><br>
+    <p>Tags:</p>
+    <input type="text" name="tags" placeholder='politics, sports, etc...' required><br>
     <input type="submit" value="Submit">
   </form>
-
 
 </div>

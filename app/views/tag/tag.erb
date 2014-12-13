@@ -1,0 +1,9 @@
+<div class="container">
+
+  <h2>#<%= @tag.name %></h2>
+
+  <% @confrontations.each do |confrontation|%>
+    <a href='/confrontation/<%= confrontation.id %>'><%= confrontation.title %></a>
+  <% end %>
+
+</div>

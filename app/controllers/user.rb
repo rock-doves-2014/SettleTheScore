@@ -7,7 +7,9 @@ post '/login' do
   if user
     session[:user_id] = user.id
     redirect "/profile/#{user.id}"
+  # elsif pending for database validation
   else
+    set_error('Login failed')
     redirect '/login'
   end
 end
@@ -21,7 +23,7 @@ post '/signup' do
 
   if user.save
     session[:user_id] = user.id
-    redirect '/'
+    redirect "/profile/#{user.id}"
   else
     redirect '/signup'
   end
@@ -31,9 +33,12 @@ get '/profile/:id' do |id|
   @user = User.find(id)
   if @user.id == session[:user_id]
     erb :'user/profile'
-  # elsif user[id] != nil
   else
-    redirect '/login'
+    if session[:user_id]
+      redirect '/'
+    else
+      redirect '/login'
+    end
   end
 end
 
