@@ -7,7 +7,9 @@ post '/login' do
   if user
     session[:user_id] = user.id
     redirect "/profile/#{user.id}"
+  # elsif pending for database validation
   else
+    set_error('Login failed')
     redirect '/login'
   end
 end

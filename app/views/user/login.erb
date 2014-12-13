@@ -1,11 +1,11 @@
 <div class="container">
-
+  <%= display_error %>
   <h1> Login </h1>
     <form action='/login' method="POST">
       Username: <br><br>
-      <input type="text" name="user[name]"><br><br>
+      <input type="text" name="user[name]" required><br><br>
       Password:<br><br>
-      <input type="password" name="user[password]"><br><br>
+      <input type="password" name="user[password]" required><br><br>
       <input type="submit" value="Login">
     </form>
   <a href="/">Home</a>
