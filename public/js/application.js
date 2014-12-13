@@ -1,7 +1,20 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+//   var seconds = 60;
+//   function secondPassed() {
+//     var minutes = Math.round((seconds - 30)/60);
+//     var remainingSeconds = seconds % 60;
+//     if (remainingSeconds < 10) {
+//         remainingSeconds = "0" + remainingSeconds;
+//     }
+//     document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+//     if (seconds == 0) {
+//         clearInterval(countdownTimer);
+//         document.getElementById('countdown').innerHTML = "Buzz Buzz";
+//     } else {
+//         seconds--;
+//     }
+// }
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+// $(document).ready(function() {
+
+//   var countdownTimer = setInterval("secondPassed()", 1000);
+//   });

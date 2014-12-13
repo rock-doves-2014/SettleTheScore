@@ -25,13 +25,15 @@
   </datalist>
   <nav>
     <ul>
-      <% if !@user %>
+      <% if !session[:user_id] %>
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
+        <li><a href="/">Home</a></li>
       <% else %>
-        <li><a href="/profile/<%= @user.id %>">Hi, <%= @user.name %></a></li>
+        <li><a href="/profile/<%= session[:user_id] %>">Hi, <%= User.find(session[:user_id]).name %></a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/confrontation/new">Start Arguing!</a></li>
+        <li><a href="/">Home</a></li>
       <% end %>
       <li>
         <form action='/tag' method='GET'>
