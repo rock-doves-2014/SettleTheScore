@@ -1,15 +1,19 @@
 <div class="container">
+
   <h1>Profile</h1>
   <h3>Welcome, <%= @user.name %>!</h3>
   <h4>Current Confrontations</h4>
   <% @user.confrontations.each do |conf| %>
-  <h6><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h6>
+    <h6><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h6>
   <% end %>
 
   <h4>Current Rebuttals</h4>
   <% @user.rebuttals.each do |reb| %>
-  <h5><a href="/confrontation/<%= reb.confrontation_id %>"><%= reb.confrontation.title %></a></h5>
-  <a href="/rebuttal/answer/<%= reb.confrontation.id %>">Answer</a>
+    <h5><a href="/confrontation/<%= reb.confrontation_id %>"><%= reb.confrontation.title %></a></h5>
+    <% if reb.counterargument == "Unanswered" %>
+      <a href="/rebuttal/<%= reb.confrontation.id %>/new">Answer!</a>
+    <% end %>
   <% end %>
+  <a href="/">Home</a>
 
 </div>

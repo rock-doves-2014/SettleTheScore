@@ -1,6 +1,6 @@
-get '/rebuttal/answer/:id' do |id|
+get '/rebuttal/:id/new' do |id|
   @confrontation = Confrontation.find(id)
-  erb :'rebuttal/answer'
+  erb :'rebuttal/new'
 end
 
 put '/rebuttal' do

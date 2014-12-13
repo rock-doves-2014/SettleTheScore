@@ -1,22 +1,24 @@
 <div class="container">
   <h1>Confrontation</h1>
 
-<div class='confrontation'>
-  <h4><%= @confrontation.title %></h4>
-  <div class='argument'>
-    <p><%= @confrontation.argument %></p>
-    <form action="/vote/true" method='POST'>
-      <input type="hidden" name='id' value="<%= @confrontation.id %>">
-      <input type='submit' value='Upvote!'>
-    </form>
+  <div class='confrontation'>
+    <h4><%= @confrontation.title %></h4>
+    <div class='argument'>
+      <p><%= @confrontation.argument %></p>
+      <form action="/vote/true" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote!'>
+      </form>
+      <%= @confrontation.calculate_votes[0] %>
+    </div>
+    <div class='rebuttal'>
+      <p><%= @confrontation.rebuttal.counterargument %></p>
+      <form action="/vote/false" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote!'>
+      </form>
+      <%= @confrontation.calculate_votes[1] %>
+    </div>
   </div>
-  <div class='rebuttal'>
-    <p><%= @confrontation.rebuttal.counterargument %></p>
-    <form action="/vote/false" method='POST'>
-      <input type="hidden" name='id' value="<%= @confrontation.id %>">
-      <input type='submit' value='Upvote!'>
-    </form>
-  </div>
-</div>
-
+  <a href="/">Home</a>
 </div>

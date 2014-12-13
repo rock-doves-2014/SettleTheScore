@@ -1,29 +1,27 @@
 <div class="container">
   <h1>Confrontation!</h1>
+  <a href="/profile/<%= @user %>">Profile</a>
 
-<nav>
-  <% if !@user %>
-    <form action='/login' method="GET">
-      <input type="submit" value="Login">
-    </form>
-    <br>
-    <form action='/signup' method="GET">
-      <input type="submit" value="Signup">
-    </form>
-    <br>
-  <% else %>
-    <form action='/logout' method="GET">
-      <input type="submit" value="Logout">
-    </form><br>
-    <a href="/confrontation/new"><input type="submit" value="New Confrontaion"></a><br>
-  <% end %>
-</nav>
+  <nav>
+    <% if !@user %>
+      <form action='/login' method="GET">
+        <input type="submit" value="Login">
+      </form><br>
+      <form action='/signup' method="GET">
+        <input type="submit" value="Signup">
+      </form><br>
+    <% else %>
+      <form action='/logout' method="GET">
+        <input type="submit" value="Logout">
+      </form><br>
+      <a href="/confrontation/new"><input type="submit" value="New Confrontaion"></a><br>
+    <% end %>
+  </nav>
 
-<section>
-  <% @confrontations.each do |conf| %>
-    <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
-  <% end %>
-</section>
-
+  <section>
+    <% @confrontations.each do |conf| %>
+      <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+    <% end %>
+  </section>
 
 </div>
