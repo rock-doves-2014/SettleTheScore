@@ -1,35 +1,6 @@
 <div class="container">
   <h1>Confrontation!</h1>
 
-  <nav>
-    <% if !@user %>
-      <form action='/login' method="GET">
-        <input type="submit" value="Login">
-      </form><br>
-      <form action='/signup' method="GET">
-        <input type="submit" value="Signup">
-      </form><br>
-    <% else %>
-      <a href="/profile/<%= @user %>">Profile</a><br>
-      <form action='/logout' method="GET">
-        <input type="submit" value="Logout">
-      </form><br>
-      <a href="/confrontation/new"><input type="submit" value="New Confrontaion"></a><br>
-    <% end %>
-  </nav>
-
-  <section>
-    <datalist id='tags'>
-      <% @tags.each do |tag| %>
-        <option value="<%= tag.name %>">
-      <% end %>
-    </datalist>
-    <form action='/tag' method='GET'>
-      <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
-      <input type="submit" value='Search'>
-    </form>
-  </section>
-
   <section>
     <% @confrontations.each do |conf| %>
       <% if conf.created_at != conf.updated_at %>
