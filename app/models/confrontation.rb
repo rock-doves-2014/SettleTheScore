@@ -24,9 +24,21 @@ class Confrontation < ActiveRecord::Base
     self.tags.map { |tag| tag.name  }.join(',')
   end
 
-  # def update_tags(tags)
-  #   self.tags.clear
-  #   create_tags(tags)
-  # end
+  def time_expired?
+    (Time.now - self.updated_at)/3600 >= 24
+  end
+
+  def create_rebuttal(email)
+  opponent = User.find_by(email: email)
+  Rebuttal.create(counterargument: "Unanswered" , user_id: opponent.id, confrontation_id: self.id)
+  end
+
+  def winner
+    if self.calculate_votes[0] > self.calculate_votes[1]
+      [self.user.email, self.user.name]
+    else
+      [self.rebuttal.user.email,self.rebuttal.user.name]
+    end
+  end
 
 end

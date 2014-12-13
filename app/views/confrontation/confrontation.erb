@@ -5,18 +5,10 @@
     <h4><%= @confrontation.title %></h4>
     <div class='argument'>
       <p><%= @confrontation.argument %></p>
-      <form action="/vote/true" method='POST'>
-        <input type="hidden" name='id' value="<%= @confrontation.id %>">
-        <input type='submit' value='Upvote!'>
-      </form>
       <%= @confrontation.calculate_votes[0] %>
     </div>
     <div class='rebuttal'>
       <p><%= @confrontation.rebuttal.counterargument %></p>
-      <form action="/vote/false" method='POST'>
-        <input type="hidden" name='id' value="<%= @confrontation.id %>">
-        <input type='submit' value='Upvote!'>
-      </form>
       <%= @confrontation.calculate_votes[1] %>
     </div>
     <p>
@@ -25,5 +17,22 @@
       <% end %>
     </p>
   </div>
+  <% unless @confrontation.time_expired? %>
+    <div id='voting'>
+      <form action="/vote/true" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote Argument!'>
+      </form>
+      <form action="/vote/false" method='POST'>
+        <input type="hidden" name='id' value="<%= @confrontation.id %>">
+        <input type='submit' value='Upvote Counter Argument!'>
+      </form>
+    </div>
+  <% end %>
+  <% if @confrontation.time_expired? %>
+    <%= gravatar_tag @confrontation.winner[0] %>
+    <%= @confrontation.winner[1] %>
+  <% end %>
+
   <a href="/">Home</a>
 </div>

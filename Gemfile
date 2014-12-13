@@ -20,6 +20,8 @@ gem 'shotgun'
 
 gem 'bcrypt'
 
+gem 'gravatarify'
+
 group :test do
   gem 'faker'
   gem 'rspec'
