@@ -1,5 +1,9 @@
 get '/confrontation/new' do
-  erb :'confrontation/new'
+  if session[:user_id]
+    erb :'confrontation/new'
+  else
+    redirect '/login'
+  end
 end
 
 get '/confrontation/:id' do |id|
