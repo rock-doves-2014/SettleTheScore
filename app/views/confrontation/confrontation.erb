@@ -5,11 +5,11 @@
     <h4><%= @confrontation.title %></h4>
     <div class='argument'>
       <p><%= @confrontation.argument %></p>
-      <%= @confrontation.calculate_votes[0] %>
+      <p><%= @confrontation.calculate_votes[0] %></p>
     </div>
     <div class='rebuttal'>
       <p><%= @confrontation.rebuttal.counterargument %></p>
-      <%= @confrontation.calculate_votes[1] %>
+      <p><%= @confrontation.calculate_votes[1] %></p>
     </div>
     <p>
       <% @confrontation.tags.each do |tag| %>
@@ -38,8 +38,8 @@
     <% end %>
 
   <% else %>
-    <%= gravatar_tag @confrontation.winner[0] %>
-    <%= @confrontation.winner[1] %>
+    <div id="user_pic"><%= gravatar_tag @confrontation.winner[0] %></div>
+    <p><%= @confrontation.winner[1] %></p>
   <% end %>
 
 </div>

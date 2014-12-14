@@ -2,17 +2,17 @@
 
   <h1>Profile</h1>
   <h3>Welcome, <%= @user.name %>!</h3>
-  <%= gravatar_tag @user.email %>
+  <div id="user_pic"><%= gravatar_tag @user.email %></div>
   <h4>Current Confrontations</h4>
   <% @user.confrontations.each do |conf| %>
-    <h6><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h6>
+    <h5><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h5>
   <% end %>
 
   <h4>Current Rebuttals</h4>
   <% @user.rebuttals.each do |reb| %>
     <h5><a href="/confrontation/<%= reb.confrontation_id %>"><%= reb.confrontation.title %></a></h5>
     <% if reb.counterargument == "Unanswered" %>
-      <a href="/rebuttal/<%= reb.confrontation.id %>/new">Answer!</a>
+      <h5><a href="/rebuttal/<%= reb.confrontation.id %>/new">Answer!</a></h5>
     <% end %>
   <% end %>
 
