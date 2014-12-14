@@ -17,9 +17,11 @@
       <% end %>
     </p>
   </div>
+
   <% unless @confrontation.time_expired? %>
     <!-- Text in expiration_time div must be hidden so that users don't see it but can't be removed! I'm setting it to white color text for now. -->
-    <div id="expiration_time" style="color: white"><%= @confrontation.time_remaining_until_expired %></div>
+    <div id="expiration_time" style="color: white"><%= @confrontation.display_expiration_time %></div>
+
     <% if @confrontation.rebuttal.counterargument != "Unanswered" %>
       <h4>Time left to vote:</h4>
       <div id="countdown"></div>
@@ -34,8 +36,8 @@
         </form>
       </div>
     <% end %>
-  <% end %>
-  <% if @confrontation.time_expired? %>
+
+  <% else %>
     <%= gravatar_tag @confrontation.winner[0] %>
     <%= @confrontation.winner[1] %>
   <% end %>

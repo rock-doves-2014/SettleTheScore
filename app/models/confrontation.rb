@@ -8,11 +8,11 @@ class Confrontation < ActiveRecord::Base
   validates :title, presence: true
   validates :argument, presence: true
 
-  def calculate_votes
-    trues = self.votes.where(vote: true).count
-    [trues, self.votes.count - trues]
+  def create_rebuttal(name)
+  opponent = User.find_by(name: name)
+  Rebuttal.create(counterargument: "Unanswered" , user_id: opponent.id, confrontation_id: self.id)
   end
-
+  
   def create_tags(tags)
     tags.split(',').each do |tag|
       self.tags << Tag.find_or_create_by(name: tag.strip)
@@ -24,23 +24,43 @@ class Confrontation < ActiveRecord::Base
     self.tags.map { |tag| tag.name  }.join(',')
   end
 
+  def time_since_created
+    (Time.now - self.created_at)/3600
+  end
+
+  def answered?
+    self.rebuttal.created_at != self.rebuttal.updated_at
+  end
+
+  def unanswered_after_24_hours_of_creation?
+    self.time_since_created >= 24 && !self.answered
+  end
+
+  def destroy_confrontation!
+    self.confrontation_tags.each { |ct| ct.destroy }
+    self.rebuttal.destroy
+    self.destroy
+  end
+
   def expiration_time
     self.updated_at + 86400
   end
 
-  def time_remaining_until_expired
-    if self.rebuttal.created_at != self.rebuttal.updated_at
-      expiration_time
+  def display_expiration_time
+    if self.answered?
+      self.expiration_time
     end
   end
 
   def time_expired?
-    (Time.now - self.updated_at)/3600 >= 24
+    if self.answered?
+      (Time.now - self.updated_at)/3600 >= 24
+    end
   end
 
-  def create_rebuttal(name)
-  opponent = User.find_by(name: name)
-  Rebuttal.create(counterargument: "Unanswered" , user_id: opponent.id, confrontation_id: self.id)
+  def calculate_votes
+    trues = self.votes.where(vote: true).count
+    [trues, self.votes.count - trues]
   end
 
   def winner

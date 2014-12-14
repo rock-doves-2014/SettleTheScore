@@ -8,7 +8,13 @@ end
 
 get '/confrontation/:id' do |id|
   @confrontation = Confrontation.find(id)
-  erb :'confrontation/confrontation'
+  if @confrontation.unanswered_after_24_hours_of_creation?
+    @confrontation.destroy_confrontation!
+    set_error('This confrontation doesn\'t exist anymore. Sorry!')
+    redirect '/'
+  else
+    erb :'confrontation/confrontation'
+  end
 end
 
 post '/confrontation' do
