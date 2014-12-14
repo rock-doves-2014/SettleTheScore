@@ -2,18 +2,25 @@
 
   <h1>Profile</h1>
   <h3>Welcome, <%= @user.name %>!</h3>
-  <%= gravatar_tag @user.email %>
+  <%=  gravatar_tag @user.email %>
   <h4>Current Confrontations</h4>
+  <ul>
   <% @user.confrontations.each do |conf| %>
-    <h6><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></h6>
+    <li class = "list" ><a href="/confrontation/<%= conf.id %>"><%= conf.title %></a></li>
   <% end %>
+  </ul>
 
   <h4>Current Rebuttals</h4>
+  <ul>
   <% @user.rebuttals.each do |reb| %>
-    <h5><a href="/confrontation/<%= reb.confrontation_id %>"><%= reb.confrontation.title %></a></h5>
+    <li class = "list">
+   <a class ='rebuttals' href="/confrontation/<%= reb.confrontation_id %>"><%= reb.confrontation.title %></a>
     <% if reb.counterargument == "Unanswered" %>
-      <a href="/rebuttal/<%= reb.confrontation.id %>/new">Answer!</a>
+      <a class = 'icon-fire rebuttals' href="/rebuttal/<%= reb.confrontation.id %>/new"></a>
     <% end %>
+    </li>
   <% end %>
+
+  </ul>
 
 </div>

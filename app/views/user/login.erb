@@ -1,15 +1,13 @@
 <div class="container">
-  <%= display_error %>
+ <div id = "error"> <%= display_error %> </div>
+
   <h1> Login </h1>
     <form action='/login' method="POST">
       Username: <br><br>
-      <input type="text" name="user[name]" required><br><br>
+      <input class = " input_bar" type="text" name="user[name]" required><br><br>
       Password:<br><br>
-      <input type="password" name="user[password]" required><br><br>
-      <input type="submit" value="Login">
+      <input class = " input_bar" type="password" name="user[password]" required><br><br>
+      <input class = "login_singup" type="submit" value="Login">
+       <a href='/signup'><input class = "login_singup" type="submit" value="Signup"></a>
     </form>
-    <form action='/signup' method="GET">
-        <input type="submit" value="Signup">
-    </form><br>
-
 </div>

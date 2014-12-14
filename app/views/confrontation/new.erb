@@ -5,14 +5,14 @@
   <form action='/confrontation' method='POST'>
     <p>Title:</p>
     <input type="hidden" name="confrontation[user_id]" value='<%= session[:user_id]%>'>
-    <input type="text" name="confrontation[title]" required><br>
+    <input class = " input_bar" type="text" name="confrontation[title]" required><br>
     <p>Argument:</p>
-    <textarea name="confrontation[argument]" required></textarea><br>
+    <textarea  class = "text_area" name="confrontation[argument]" required></textarea><br>
     <p>Your Opponent:</p>
-    <input type="text" name="opponent" placeholder='Username' required><br>
+    <input class = " input_bar" type="text" name="opponent" placeholder='Username' required><br>
     <p>Tags:</p>
-    <input type="text" name="tags" placeholder='politics, sports, etc...' required><br>
-    <input type="submit" value="Submit">
+    <input  class = " input_bar" type="text" name="tags" placeholder='politics, sports, etc...' required><br>
+    <input class= "login_singup" type="submit" value="Submit">
   </form>
 
 </div>
