@@ -20,7 +20,6 @@ require "sinatra/reloader" if development?
 
 require 'erb'
 require 'bcrypt'
-require 'faker'
 require 'gravatarify'
 
 
