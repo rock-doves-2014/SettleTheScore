@@ -8,5 +8,5 @@ put '/rebuttal' do
   rebuttal.update(counterargument: params[:counterargument])
   @confrontation = Confrontation.find(rebuttal.confrontation_id)
   rebuttal.update_confrontation_updated_at_time
-  erb :'confrontation/confrontation'
+  redirect "/confrontation/#{@confrontation.id}"
 end
