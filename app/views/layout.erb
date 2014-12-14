@@ -19,43 +19,38 @@
 </head>
 <body>
   <header>
-    <p class = "main_font">SettleTheScore <span>.com</span> </p>
+    <p class = "main_font">SettleTheScore</p>
   <datalist id='tags'>
     <% tags.each do |tag| %>
       <option value="<%= tag.name %>">
     <% end %>
   </datalist>
-  <nav>
+  <nav class="head">
     <ul>
       <% if !session[:user_id] %>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Signup</a></li>
-        <li><a href="/">Home</a></li>
+        <li> <a href="/" class = "icon-home"></a></li>
+        <li><a class="top_nav" href="/login">Login</a></li>
+        <li><a class="top_nav" href="/signup">Signup</a></li>
       <% else %>
-        <li><a href="/profile/<%= session[:user_id] %>">Hi, <%= User.find(session[:user_id]).name %></a></li>
-        <li><a href="/logout">Logout</a></li>
-        <li><a href="/confrontation/new">Start Arguing!</a></li>
-        <li><a href="/">Home</a></li>
+        <li> <a href="/" class = "icon-home"></a></li>
+        <li><a class="top_nav" href="/profile/<%= session[:user_id] %>">Hi, <%= User.find(session[:user_id]).name %></a></li>
+        <li><a class="top_nav" href="/logout">Logout</a></li>
+        <li><a class="top_nav" href="/confrontation/new">Start Arguing!</a></li>
       <% end %>
       <li>
+
         <form action='/tag' method='GET'>
           <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
-          <input type="submit" value='Search'>
-          </form>
-          <nav class="head">
+          <input id = "search_buttom" class="icon-search" type="submit" value ="&#xe600">
+        </form>
 
-              <ul>
-                <li> <a href="/" class = "icon-home"></a></li>
-                <% if current_user %>
-                  <li><a class="top_nav" href="/logout">Logout</a></li>
-                <% else %>
-                  <li><a class="top_nav" href="/signup">Signup</a></li>
-                  <li><a class="top_nav" href="/login">Login</a></li>
-                  <% end %>
-              </ul>
-          </nav>
-        </header>
-        <%=yield%>
+      </li>
+    </ul>
+  </nav>
+  </header>
+
+
+      <%=yield%>
 
   </body>
 </head>

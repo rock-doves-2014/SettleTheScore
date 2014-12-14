@@ -93,9 +93,9 @@ a:focus {
 
 a:active,
 a:hover {
-    /* outline: 0; */
-    /* background-color: rgb(124, 124, 124); */
-    /* color: white; */
+    outline: 0;
+    background-color: rgb(124, 124, 124);
+    color: white;
     text-decoration: none;
 }
 
