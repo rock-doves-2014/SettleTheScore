@@ -24,6 +24,16 @@ class Confrontation < ActiveRecord::Base
     self.tags.map { |tag| tag.name  }.join(',')
   end
 
+  def expiration_time
+    self.updated_at + 86400
+  end
+
+  def time_remaining_until_expired
+    if self.rebuttal.created_at != self.rebuttal.updated_at
+      expiration_time
+    end
+  end
+
   def time_expired?
     (Time.now - self.updated_at)/3600 >= 24
   end

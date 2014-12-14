@@ -1,20 +1,32 @@
-//   var seconds = 60;
-//   function secondPassed() {
-//     var minutes = Math.round((seconds - 30)/60);
-//     var remainingSeconds = seconds % 60;
-//     if (remainingSeconds < 10) {
-//         remainingSeconds = "0" + remainingSeconds;
-//     }
-//     document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
-//     if (seconds == 0) {
-//         clearInterval(countdownTimer);
-//         document.getElementById('countdown').innerHTML = "Buzz Buzz";
-//     } else {
-//         seconds--;
-//     }
-// }
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
 
-// $(document).ready(function() {
+    function showRemaining() {
 
-//   var countdownTimer = setInterval("secondPassed()", 1000);
-//   });
+        var end = new Date(document.getElementById("expiration_time").innerHTML);
+
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+          clearInterval(timer);
+          return;
+        }
+        var days = Math.floor(distance / _day);
+        var hours = Math.floor((distance % _day) / _hour);
+        var minutes = Math.floor((distance % _hour) / _minute);
+        var seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('countdown').innerHTML = hours + 'hrs ';
+        document.getElementById('countdown').innerHTML += minutes + 'mins ';
+        document.getElementById('countdown').innerHTML += seconds + 'secs';
+    }
+
+
+$(document).ready(function() {
+
+  timer = setInterval(showRemaining, 1000);
+
+  });

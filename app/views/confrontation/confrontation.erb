@@ -1,10 +1,6 @@
 <div class="container">
   <h1>Confrontation</h1>
 
- <!--  <div id="countdown">
-    0:0
-  </div>
- -->
   <div class='confrontation'>
     <h4><%= @confrontation.title %></h4>
     <div class='argument'>
@@ -22,16 +18,22 @@
     </p>
   </div>
   <% unless @confrontation.time_expired? %>
-    <div id='voting'>
-      <form action="/vote/true" method='POST'>
-        <input type="hidden" name='id' value="<%= @confrontation.id %>">
-        <input type='submit' value='Upvote Argument!'>
-      </form>
-      <form action="/vote/false" method='POST'>
-        <input type="hidden" name='id' value="<%= @confrontation.id %>">
-        <input type='submit' value='Upvote Counter Argument!'>
-      </form>
-    </div>
+    <!-- Text in expiration_time div must be hidden so that users don't see it but can't be removed! I'm setting it to white color text for now. -->
+    <div id="expiration_time" style="color: white"><%= @confrontation.time_remaining_until_expired %></div>
+    <% if @confrontation.rebuttal.counterargument != "Unanswered" %>
+      <h4>Time left to vote:</h4>
+      <div id="countdown"></div>
+      <div id='voting'>
+        <form action="/vote/true" method='POST'>
+          <input type="hidden" name='id' value="<%= @confrontation.id %>">
+          <input type='submit' value='Upvote Argument!'>
+        </form>
+        <form action="/vote/false" method='POST'>
+          <input type="hidden" name='id' value="<%= @confrontation.id %>">
+          <input type='submit' value='Upvote Counter Argument!'>
+        </form>
+      </div>
+    <% end %>
   <% end %>
   <% if @confrontation.time_expired? %>
     <%= gravatar_tag @confrontation.winner[0] %>
