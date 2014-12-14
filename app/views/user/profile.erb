@@ -2,7 +2,7 @@
 
   <h1>Profile</h1>
   <h3>Welcome, <%= @user.name %>!</h3>
-  <%=  gravatar_tag @user.email %>
+  <div id="user_pic"><%= gravatar_tag @user.email %></div>
   <h4>Current Confrontations</h4>
   <ul>
   <% @user.confrontations.each do |conf| %>

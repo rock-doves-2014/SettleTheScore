@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Welcome to Settle The Score</h1>
   <p>Welcome to Settle The Score, the premier online debate mediator. Challenge your friends and foes to an all out squabble to the death in hopes of being crowned the internets best arguer. Don’t have the guts to compete…sign up and up-vote other peoples confrontations and rebuttals. Winners will be decided after 24 hours!</p>
+  <%= display_error %>
   <section>
     <div>
 
@@ -11,8 +12,12 @@
     <% @confrontations.each do |conf| %>
       <li class = 'list'>
         <% if conf.created_at != conf.updated_at %>
-        <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
-      <% end %>
+          <% if conf.answered? %>
+            <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+          <% else %>
+            <% conf.destroy_if_unanswered_after_24_hours %>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
     </ul>
