@@ -42,6 +42,10 @@ class Confrontation < ActiveRecord::Base
     self.destroy
   end
 
+  def destroy_if_unanswered_after_24_hours
+    self.destroy_confrontation! if self.unanswered_after_24_hours_of_creation?
+  end
+
   def expiration_time
     self.updated_at + 86400
   end

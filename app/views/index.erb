@@ -9,8 +9,10 @@
     <h3>Current Confrontations:</h3>
 
     <% @confrontations.each do |conf| %>
-      <% if conf.created_at != conf.updated_at %>
+      <% if conf.answered? %>
         <a href="/confrontation/<%= conf.id %>"><%= conf.title %></a>
+      <% else %>
+        <% conf.destroy_if_unanswered_after_24_hours %>
       <% end %>
     <% end %>
   </section>
