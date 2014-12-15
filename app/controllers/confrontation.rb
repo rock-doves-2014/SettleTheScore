@@ -1,4 +1,5 @@
 get '/confrontation/new' do
+  @users = User.all
   if session[:user_id]
     erb :'confrontation/new'
   else
