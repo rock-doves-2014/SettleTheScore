@@ -33,7 +33,7 @@ class Confrontation < ActiveRecord::Base
   end
 
   def unanswered_after_24_hours_of_creation?
-    self.time_since_created >= 24 && !self.answered
+    self.time_since_created >= 24 && !self.answered?
   end
 
   def destroy_confrontation!

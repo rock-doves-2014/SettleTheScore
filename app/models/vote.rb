@@ -7,12 +7,12 @@ class Vote < ActiveRecord::Base
     self.save
   end
   def true_vote
-    self.vote = true if self.vote == nil
+    self.vote = true if self.vote.nil?
     self.save
   end
 
   def false_vote
-    self.vote = false if self.vote == nil
+    self.vote = false if self.vote.nil?
     self.save
   end
 
