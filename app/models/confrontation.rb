@@ -14,7 +14,7 @@ class Confrontation < ActiveRecord::Base
   end
   
   def create_tags(tags)
-    tags.split(',').each do |tag|
+    tags.split(',').uniq.each do |tag|
       self.tags << Tag.find_or_create_by(name: tag.strip)
     end
     self.save
