@@ -22,5 +22,5 @@ post '/confrontation' do
   @confrontation = user.confrontations.create(params[:confrontation])
   @confrontation.create_rebuttal(params[:opponent])
   @confrontation.create_tags(params[:tags])
-  redirect 'confrontation/<%= @confrontation.id%>'
+  redirect "confrontation/#{@confrontation.id}"
 end
