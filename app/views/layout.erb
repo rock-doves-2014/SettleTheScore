@@ -28,11 +28,11 @@
   <nav class="head">
     <ul>
       <% if !session[:user_id] %>
-        <li> <a href="/" class = "icon-home"></a></li>
+        <li> <a href="/" class = "icon-home home"></a></li>
         <li><a class="top_nav" href="/login">Login</a></li>
         <li><a class="top_nav" href="/signup">Signup</a></li>
       <% else %>
-        <li> <a href="/" class = "icon-home"></a></li>
+        <li> <a href="/" class = "icon-home home"></a></li>
         <li><a class="top_nav" href="/profile/<%= session[:user_id] %>">Hi, <%= User.find(session[:user_id]).name %></a></li>
         <li><a class="top_nav" href="/logout">Logout</a></li>
         <li><a class="top_nav" href="/confrontation/new">Start Arguing!</a></li>
@@ -41,7 +41,7 @@
 
         <form action='/tag' method='GET'>
           <input type="text" list='tags' name='tag' placeholder='politics, sports, etc...'>
-          <input id = "search_buttom" class="icon-search" type="submit" value ="&#xe600">
+          <input id = "search_buttom" class="icon-search search" type="submit" value ="&#xe600">
         </form>
 
       </li>
