@@ -6,7 +6,8 @@ end
 
 get '/tag' do
   @tag = Tag.find_by(name: params[:tag])
-  if @tag == nil
+  if @tag.nil?
+    set_error('No confrontations with that tag.')
     redirect "/"
   else
   @confrontations = @tag.confrontations
